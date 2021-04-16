@@ -15,7 +15,7 @@
 
 ---
 ## Problem Statement
-Use divide and conquer to compute 1+2+3+4+.... upto n numbers.
+Find the minimum  distance between any pair location(or cells) in a given 2D matrix.
 
 ---
 ## How to use code
@@ -26,10 +26,10 @@ git clone https://github.com/d3ad5h01/DAA_Assignments.git
 Project Initialize 
 ```
 #Opening Assingment folder
-cd Assingment2
+cd Assingment3
 
 #Compiling The code
-g++ natSum.cpp -o output
+g++ code.cpp -o output
 ```
 ---
 
@@ -39,11 +39,11 @@ Run the code
 ```
 Input
 ```
-Input contains an integer n, upto which sum has to be calculated.
+Input contains two integers n and m, denoting size of a 2D matrix and then we input the elements of 2D matrix, i.e, 1's or 0's respectively.
 ```
 Ouput 
 ```
-Output will be an integer, i.e., the value of sum from 1 to n.
+Output will be an integer denoting cost of the path if it is found else an error message.
 ```
 ---
 *Test case*
@@ -51,19 +51,34 @@ Output will be an integer, i.e., the value of sum from 1 to n.
 Test Case-1
 ```
 Input:
-10
+6 6
+1 1 1 1 1 1
+0 0 0 0 0 1
+1 1 1 1 1 1
+1 0 0 0 0 0 
+1 1 1 1 1 1
+0 0 0 0 0 1
+0 0
+5 5 
 
 Output:
-55
+21
 ```
 
 Test Case-2
 ```
 Input:
-25
+5 5
+1 1 0 1 1 
+0 1 0 0 0 
+1 1 1 0 1 
+0 0 0 0 0 
+1 0 1 0 1 
+0 1
+4 2
 
 Output:
-325
+Not Found
 
 ```
 
@@ -71,11 +86,13 @@ Output:
 ### Theory
 Logic
 ```
-1. We store values from 1 to n in an array.
-2. In sumArray function we check for base cases like if size of array is 0, then sum is 0.
-3. Else if size of array is 1, then sum is value of the only element.
-4. Then we apply divide and conquor by dividing array in two halves and recursively calling the function sumArray.
-5. Finally, we return the sum of the two halves.
+1. Input dimension of given matrix. 
+2. Store then the matrix and source cell’s and destination cell’s location.
+3. Store each cell as a node with their row, column values and distance from the source cell.
+4. Start BFS with the source cell.
+5. Make a visited array with all having “false” values.
+6. Keep updating distance from source value in each move.
+7. Return distance when destination is met, else return -1 (no path exists in between source and destination).
 ```
 
 ---
@@ -83,17 +100,17 @@ Logic
 
 *Time Complexity*
 ```
-For all the cases : o(n)
+For all the cases : o(n+m)
 ```
 *Space Complexity*
 ```
-For all the cases : o(n)
+For all the cases : o(n*m)
 ```
-where n is an integer upto which sum has to be calculated.
+where n and m are sizes of the matrix
 
 ---
 ### References
 ```
-Introduction to Divide and Conquer Technique: GFG
+Breadth First Search or BFS for a Graph : GFG
 Introduction to Algorithms by Cormen,Charles, Rivest and Stein.
 ```
