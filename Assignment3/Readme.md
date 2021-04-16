@@ -100,7 +100,7 @@ Logic
 
 *Time Complexity*
 ```
-For all the cases : o(n+m)
+For all the cases : o(n*m)
 ```
 *Space Complexity*
 ```
